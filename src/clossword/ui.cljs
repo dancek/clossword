@@ -1,11 +1,11 @@
 (ns clossword.ui
   (:require [reagent.dom :as dom]
             ["react-crossword" :default Crossword]
-            ["./demo.js" :default demo]))
+            [clossword.demo :refer [demo-raw]]))
 
 (defn xw-demo []
   [:> Crossword
-   {:data demo}])
+   {:data (clj->js demo-raw)}])
 
 (defn init
   []
