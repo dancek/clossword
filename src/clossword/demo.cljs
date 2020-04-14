@@ -1,6 +1,38 @@
 (ns clossword.demo)
 
-(def demo-raw 
+(def demo-simple
+  {:entries [{:number    1
+              :clue      "Toy on a string (2-2)"
+              :x         0
+              :y         0
+              :solution  "YOYO"
+              :direction :across}
+             {:number    2
+              :clue      "Have a rest (3,4)"
+              :x         0
+              :y         2
+              :solution  "LIEDOWN"
+              :direction :across}
+             {:number    1
+              :clue      "Colour (6)"
+              :x         0
+              :y         0
+              :solution  "YELLOW"
+              :direction :down}
+             {:number    3
+              :clue      "Bits and bobs (4,3,4)"
+              :x         3
+              :y         0
+              :solution  "ODDSAND"
+              :direction :down}
+             {:number    4
+              :clue      "See 3 down"
+              :x         6
+              :y         1
+              :solution  "ENDS"
+              :direction :down}]})
+
+(def demo-raw
   {:date 1542326400000
    :crosswordType "quick"
    :number 1
