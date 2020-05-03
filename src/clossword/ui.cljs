@@ -1,16 +1,17 @@
 (ns clossword.ui
-  (:require [reagent.dom :as dom]
+  (:require [cljs.pprint :refer [pprint]]
+            [reagent.dom :as dom]
             ["react-crossword" :default Crossword]
-            [clossword.demo :refer [demo-raw demo-simple demo-grid]]
             [clossword.guardian :refer [guardian-crossword]]
             [clossword.convert :as convert]))
 
-(defn init
-  []
+(defn init-xw
+  [xw]
   (dom/render
    [:<>
-    [:pre (convert/words-in-grid demo-grid)]
-    [guardian-crossword :demo demo-simple]]
+    (let [xw-clj (js->clj xw :keywordize-keys true)
+          data (convert/guardianize xw-clj)]
+      [:<>
+       [guardian-crossword :demo data]
+       [:pre (with-out-str (pprint data))]])]
    (js/document.getElementById "app")))
-
-(init)

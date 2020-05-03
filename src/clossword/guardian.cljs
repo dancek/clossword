@@ -14,9 +14,9 @@
    :solutionAvailable     true})
 
 (defn- fill-entry
-  [{:keys [number clue solution direction x y]
+  [{:keys [number solution direction x y]
     :as entry}]
-  (let [id (str number "-" direction)] 
+  (let [id (str number "-" (name direction))]
     (merge
      {:humanNumber        (str number)
       :separatorLocations {}
