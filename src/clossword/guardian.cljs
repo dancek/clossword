@@ -4,7 +4,6 @@
 
 (def ^:private minimal-data
   {:date                  0
-   :crosswordType         "quick"
    :number                1
    :name                  "Auto-converted crossword"
    :dimensions            {:cols 13
@@ -29,9 +28,14 @@
 
 (defn ->guardian-format
   [data]
-  (merge minimal-data
-         data
-         {:entries (map fill-entry (:entries data))}))
+  (let [size (some-> data :dimensions :cols)
+        css-type (if (= 15 size)
+                   "cryptic"
+                   "quick")
+        merged (merge minimal-data data)]
+    (assoc merged
+           :entries (map fill-entry (:entries data))
+           :crosswordType css-type)))
 
 (defn guardian-crossword
   [id data]
