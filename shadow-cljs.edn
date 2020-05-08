@@ -11,4 +11,4 @@
  {:app {:target :browser
         :output-dir "public/js"
         :asset-path "/js"
-        :modules {:main {:entries [clossword.ui]}}}}}
+        :modules {:main {:entries [clossword.guardian]}}}}}

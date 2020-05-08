@@ -1,6 +1,8 @@
 (ns clossword.guardian
   "Code supporting react-crossword"
-  (:require ["react-crossword" :default Crossword]))
+  (:require [clossword.convert :as convert]
+            [reagent.dom :as dom]
+            ["react-crossword" :default Crossword]))
 
 (def ^:private minimal-data
   {:date                  0
@@ -42,3 +44,11 @@
   [:> Crossword
    {:data (clj->js (->guardian-format data))
     :id id}])
+
+(defn render-xw
+  [elem xw]
+  (dom/render
+   (let [xw-clj (js->clj xw :keywordize-keys true)
+         data (convert/guardianize xw-clj)]
+     [guardian-crossword :demo data])
+   elem))

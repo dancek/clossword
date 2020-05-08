@@ -7,7 +7,8 @@
     <script>
       fetch("demo.json")
         .then(response => response.json())
-        .then(xw => clossword.ui.init_xw(xw));
+        .then(xw => clossword.guardian.render_xw(
+          document.getElementById("app"), xw));
     </script>
   </body>
 </html>
