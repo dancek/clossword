@@ -45,7 +45,7 @@
    {:data (clj->js (->guardian-format data))
     :id id}])
 
-(defn render-xw
+(defn ^:export render-xw
   [elem xw]
   (dom/render
    (let [xw-clj (js->clj xw :keywordize-keys true)

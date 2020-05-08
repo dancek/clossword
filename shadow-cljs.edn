@@ -11,4 +11,5 @@
  {:app {:target :browser
         :output-dir "public/js"
         :asset-path "/js"
-        :modules {:main {:entries [clossword.guardian]}}}}}
+        :module-hash-names true
+        :modules {:clossword-guardian {:entries [clossword.guardian]}}}}}
