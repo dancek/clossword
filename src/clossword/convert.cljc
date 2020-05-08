@@ -66,9 +66,11 @@
     {:dimensions {:rows (int rows)
                   :cols (int cols)}
      :entries
-     (for [entry raw]
-       (let [num (get nums (select-keys entry [:x :y]))
-             clue (get-clue clues (:direction entry) num)]
-         (assoc entry
-                :number num
-                :clue (format-clue entry clue))))}))
+     (sort-by
+      (juxt :direction :number)
+      (for [entry raw]
+        (let [num (get nums (select-keys entry [:x :y]))
+              clue (get-clue clues (:direction entry) num)]
+          (assoc entry
+                 :number num
+                 :clue (format-clue entry clue)))))}))
