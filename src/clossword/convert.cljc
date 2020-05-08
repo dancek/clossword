@@ -36,6 +36,14 @@
     (flatten (concat (map-indexed (partial words->entries :across) across)
                        (map-indexed (partial words->entries :down) down)))))
 
+(defn format-clue
+  [{:keys [solution]} clue]
+  (let [clue (string/replace clue #"^\d+. " "")
+        has-length? (re-find #"\(\d+[0-9 ,]*\)$" clue)]
+    (if has-length?
+      clue
+      (str clue " (" (count solution) ")"))))
+
 (defn get-clue
   [clues dir n]
   (->> clues
@@ -63,4 +71,4 @@
              clue (get-clue clues (:direction entry) num)]
          (assoc entry
                 :number num
-                :clue clue)))}))
+                :clue (format-clue entry clue))))}))
