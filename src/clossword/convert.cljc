@@ -63,8 +63,8 @@
                   (map-indexed (fn [i xy]
                                  [xy (inc i)]))
                   (into {}))]
-    {:dimensions {:rows (int rows)
-                  :cols (int cols)}
+    {:dimensions {:rows (max 13 (int rows))
+                  :cols (max 13 (int cols))}
      :entries
      (sort-by
       (juxt :direction :number)
