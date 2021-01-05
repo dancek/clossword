@@ -1,3 +1,5 @@
 /.shadow-cljs
+/.clj-kondo
+/.lsp
 /node_modules
 /public/js

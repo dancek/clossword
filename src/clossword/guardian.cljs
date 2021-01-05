@@ -46,9 +46,9 @@
     :id id}])
 
 (defn ^:export render-xw
-  [elem xw]
+  [elem id xw]
   (dom/render
    (let [xw-clj (js->clj xw :keywordize-keys true)
          data (convert/guardianize xw-clj)]
-     [guardian-crossword :demo data])
+     [guardian-crossword id data])
    elem))
